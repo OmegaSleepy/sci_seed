@@ -10,9 +10,9 @@ The second scientist didn't look up from his monitor. "Why should I care? Last t
 
 "One trillion Euros."
 
-That made him look up. "How is tha—" He stopped, blinking in confusion. "How?"
+That made him look up. "How is tha–" He stopped, blinking in confusion. "How?"
 
-"This document happened." The first scientist tossed a printed file onto the desk. The bold text on the cover read: [[World Cataclysm Report, 2126.pdf|World Cataclysm Report, 2126]].
+"This document happened." The first scientist tossed a printed file onto the desk. The bold text on the cover read: [[arc-1/documents/world-cataclysm-report,-2126.pdf|World Cataclysm Report, 2126]].
 
 Confused by the ominous title, the second scientist reached for the folder. "Care to explain? This looks big."
 

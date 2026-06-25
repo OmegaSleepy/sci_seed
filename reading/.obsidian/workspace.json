@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Arc 1/The Invitation.md",
+                "file": "arc-1/the-invitation.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "The Invitation"
+              "title": "the-invitation"
             }
           }
         ]
@@ -185,11 +185,13 @@
   },
   "active": "d4b8625627ec82cc",
   "lastOpenFiles": [
-    "Arc 1/Prologue.md",
-    "Arc 1/documents/NSAB_RECRUITMENT_OFFER.eml.md",
-    "Arc 1/documents/World Cataclysm Report, 2126.pdf.md",
-    "Arc 1/The Invitation.md",
-    "Arc 1/documents",
+    "arc-1/documents/world-cataclysm-report,-2126.pdf.md",
+    "arc-1/prologue.md",
+    "arc-1/documents",
+    "arc-1",
+    "arc-1/documents/nsab_recruitment_offer.eml.md",
+    "arc-1/the-invitation.md",
+    "arc-1/documents",
     "The Invitation.md",
     "Untitled.md",
     "Prologue.md",

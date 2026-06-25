@@ -10,7 +10,7 @@ However, what met his eyes was a fresh mail with a sender’s ID stating: *Natio
 
 Mark froze. He rubbed his eyes as he looked at the screen in front of him. His first reaction was to believe that someone had breached his system and was attempting to steal money from his bank account. However, upon closer inspection of the email, he found out it was legitimate.
 
-[[Arc 1/documents/NSAB_RECRUITMENT_OFFER.eml|NSAB_RECRUITMENT_OFFER]]
+[[arc-1/documents/nsab_recruitment_offer.eml|NSAB_RECRUITMENT_OFFER]]
 
 "I've been invited…" whispered Mark into the dark, empty room, his voice rough from the lack of speech for so many hours. “…by the National Space Agency of Bulgaria to become… no, wait. I’m not becoming an astronaut. So what the hell is a ‘seed’?”
 
