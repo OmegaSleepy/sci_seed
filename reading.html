@@ -102,15 +102,19 @@
   }
 
   const wikiLinkRegex = /\[\[([^\]|]+)\|([^\]]+)\]\]/g;
-  markdownContent = markdownContent.replace(wikiLinkRegex, (match, path, display) => {
-   const filePath = path.trim();
-   const displayText = display.trim();
+  markdownContent = markdownContent.replace(wikiLinkRegex, (match, pathPart, displayPart) => {
+   // Now 'pathPart' is on the left, 'displayPart' is on the right
+   const filePath = pathPart.trim();
+   const displayText = displayPart.trim();
 
+   // Use the filePath (left side) for the link
    const fullFileUrl = `reading/${filePath}.md`;
 
+   // Extract extension from the filePath (e.g., 'file.md' -> 'MD')
    const extensionMatch = filePath.match(/\.([a-zA-Z0-9]+)$/);
    const badgeText = extensionMatch ? extensionMatch[1].toUpperCase() : "EXE";
 
+   // The visible anchor text remains the displayText (right side)
    return `<a class="wiki-link-console" href="reading.html?file=${encodeURIComponent(fullFileUrl)}&title=${encodeURIComponent(displayText)}" data-cmd="${badgeText}">${displayText}</a>`;
   });
 
