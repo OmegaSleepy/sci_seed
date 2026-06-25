@@ -27,13 +27,13 @@ Empirical data indicates that the primary catalyst for long-term biosphere desta
 #### Addendum 2.1A: Global Energy Consumption and Violations
 In 2026, global baseline energy consumption for computational infrastructure was measured at approximately 3,000 GW. The subsequent expansion is codified in the data matrix below:
 
-| Fiscal Year | Power Consumption | Scaling Factor | Primary Fuel Source |
-| :--- | :--- | :--- | :--- |
-| **2026** | 3,000 GW | Baseline (1.0x) | Mixed / Transition |
-| **2030** | 12,000 GW | 4.00x increase | Coal (Unfiltered) |
-| **2035** | 48,000 GW | 16.00x increase | Coal (Unfiltered) |
-| **2040** | 86,880 GW | 28.96x increase | Coal / Solid Hydrocarbon |
-| **2045** | 182,448 GW | 60.81x increase | Coal / Heavy Industrial |
+| Fiscal Year | Power Consumption | Scaling Factor  | Primary Fuel Source      |
+| :---------- | :---------------- | :-------------- | :----------------------- |
+| **2026**    | 3,000 GW          | Baseline (1.0x) | Mixed / Transition       |
+| **2030**    | 12,000 GW         | 4.00x increase  | Coal (Unfiltered)        |
+| **2035**    | 48,000 GW         | 16.00x increase | Coal (Unfiltered)        |
+| **2040**    | 86,880 GW         | 28.96x increase | Coal / Solid Hydrocarbon |
+| **2045**    | 182,448 GW        | 60.81x increase | Coal / Heavy Industrial  |
 
 This rapid expansion constituted a material breach and a direct violation of the 2015 Paris Agreement. Instead of achieving the mandated stabilization of global temperatures within a strict 2°C threshold, global mean temperatures rose by approximately 5°C over pre-industrial baselines during this phase.
 

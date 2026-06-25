@@ -2,36 +2,36 @@
 id: 0
 type: chapter
 ---
-Inside the National Space Agency of Bulgaria, the laboratory was dead silent save for the hum of the servers. It was deep into the night shift, and two lead scientists were trying to keep themselves awake.
+In the Bulgarian National Space Agency, the lab stayed silent apart from the combined noise of the computers. This was the middle of the night shift, and there were two chief researchers trying to keep themselves awake.
 
-"Heard the news?" the first one asked, leaning against a console. "They just passed a new budget."
+“Did you hear about the latest news?” asked the first researcher, leaning on the console. “We got a new budget.”
 
-The second scientist didn't look up from his monitor. "Why should I care? Last time, they cut our funding in half." He let out a heavy sigh, rubbing his tired eyes. "Honestly, I might as well just quit and go to a private firm."
+The second researcher kept staring at the computer screen. “What should I care about? Our budget has already been cut down to half.” He sighed deeply and rubbed his tired eyes. “Seriously, maybe I should quit and get a job in some other private tech company, oh or maybe even a startup. Know any promising?”
 
-"One trillion Euros."
+“One trillion euros.”
 
-That made him look up. "How is tha–" He stopped, blinking in confusion. "How?"
+This made him look up from his work. "How is tha–" He stopped himself mid-sentence, looking rather confused. "How?"
 
-"This document happened." The first scientist tossed a printed file onto the desk. The bold text on the cover read: [[arc-1/documents/world-cataclysm-report-2126|World Cataclysm Report, 2126.pdf]].
+"This document exists." The first scientist placed a printed document on the table in front of him. The title on the cover of the document was written in bold letters: [[arc-1/documents/world-cataclysm-report-2126|World Cataclysm Report, 2126.pdf]].
 
-Confused by the ominous title, the second scientist reached for the folder. "Care to explain? This looks big."
+Terrified by the ominous sounding name of the document, the second scientist picked it up. "I see. What is it about? It seems like an important issue."
 
-The first scientist took a slow sip of his coffee. "Earth won't be able to sustain life by roughly 2200. The global plan is to evacuate humanity into deep space to search for a new home planet."
+"Earth won't be able to support any life forms within the next hundred years. The plan is to move people away from Earth and into deep space to find another suitable planet."
 
-The second scientist let out a breath, his frustration melting into sudden focus. "Okay, that makes sense. But why give _us_ that much money?"
+The second scientist breathed out, all his frustration dissipated, and he focused once again. "I understand. But why invest so much money in our team?"
 
-Exhausted from repeating the explanation all day, the first scientist pinched the bridge of his nose. "We aren't building the evacuation ships. Our job here at the NSAB will be..." He paused, a heavy silence filling the room. "The international committee has selected twenty countries, including us. Our task is to train the people who stay behind."
+Exhausted from repeating the explanation all day, the first scientist pinched his nose. “It won’t be us that are going to build evacuation ships, we don't have a working metal factory. Our job here at NSAB will be…” He paused, a heavy silence filling the room. “The international committee has selected twenty countries, including us. Our job is to train the people who stay.”
 
-With far more questions than answers, the second scientist finally shut off his monitor. "Train them for what? Wait, wait. What are these people supposed to do on Earth? Didn't you just say the planet won't be able to host life in eighty years?"
+With far more questions than answers, the second scientist finally turned off his monitor. “Train them for what? Wait, wait. What are these people supposed to do on Earth? Didn’t you just say that the planet won’t be able to support life by the end of the century?”
 
-Leaning over the desk, the first scientist set down his empty mug. "According to the protocol, we have forty years to perfect cryogenic stasis. We also have to select and train one thousand young candidates to become expert doctors, biologists, chemists, engineers, and programmers. A chosen few will be trained specifically to lead them."
+Leaning over the desk, the first scientist set down his empty glass. “According to protocol, we have forty years to perfect cryogenic stasis. We also have to select and train a thousand young candidates to become expert doctors, biologists, chemists, engineers, and programmers. A select few will be specially trained to lead them.”
 
-The grand scale of the project finally clicked. The second scientist leaned back in his chair, stunned. "I get it. They're going to recolonize Earth after the collapse. That begs the question, though—how long are they going to sleep, and where are we going to store them?"
+The grand scale of the project finally dawned on him. The second scientist leaned back in his chair, stunned. “I see. They’ll recolonize Earth after the collapse. But that raises the question of how long they’ll sleep, and where we’ll store them?”
 
-At the phrase _store them_, the first scientist snapped. "They aren't cargo!" He rubbed his temples, softening his tone. "Though, to be frank, the document explicitly refers to them as 'Seeds.' From what I gathered, Germany is already designing the facility. The report claims the bunker will have to endure at least 50,000 years, buried two hundred meters below the surface."
+At the phrase *store them*, the first scientist flinched. “They’re not cargo!” He rubbed his temples, softening his tone. “Although, to be honest, the document specifically calls them ‘Seeds.’ From what I understand, Germany is already designing the facility. The report states that the bunker will have to last at least 50,000 years, buried two hundred meters below the surface.”
 
-Amused that he had managed to get a rise out of his usually serious colleague, the second scientist chuckled. "It sounds almost too simple, doesn't it? Look, I'm too exhausted to process any more of this. If there's anything else, just give me the short version."
+Amused that he had managed to make his usually flat colleague mad, the second scientist laughed. “It sounds almost too simple, doesn’t it? Look, I’m too exhausted to think about anything more than that. If there’s anything else, just give me the short version.”
 
-The first scientist scratched the back of his neck, staring at the file. "There is one final directive, but I can't wrap my head around it. Even the Chief didn't have answers. There's a heavily redacted chapter that mentions 'Core Teachings' and a specific chemical compound, but it gives zero details on what the medicine does, or what those teachings actually are."
+The first scientist scratched the back of his head, staring at the file. “There’s one last directive, but I can’t figure it out. Even the Chief didn’t have any answers. There’s a heavily redacted chapter that mentions ‘Core Doctrines’ and a specific chemical compound, but doesn’t give any details about what the drug does or what those 'teachings' actually are.”
 
-The second scientist was already drifting off, his head tilting back. "Eh... if even the Chief doesn't know, it's above our pay grade. Good night."
+The second scientist was already drifting off, his head thrown back. “Uh… if even the Chief doesn’t know, that’s above our pay grade. Good night.”
