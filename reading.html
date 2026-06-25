@@ -44,15 +44,18 @@
   document.getElementById('doc-title').innerText = title || "Data Entry";
 
   try {
-   const safeUrl = encodeURI(fileUrl);
-   const response = await fetch(safeUrl);
+   let correctPath = fileUrl;
+   if (!correctPath.startsWith('/sci_seed/') && !correctPath.startsWith('http')) {
+    correctPath = `/sci_seed/${correctPath.replace(/^\//, '')}`;
+   }
 
+   const response = await fetch(correctPath);
    if (!response.ok) throw new Error("File not found");
    const rawText = await response.text();
 
    parseAndRender(rawText);
   } catch (err) {
-   document.getElementById('reader-area').innerText = `Error 404: Node stream at '${fileUrl}' broken or missing.`;
+   document.getElementById('reader-area').innerText = `Error 404: Node stream broken or missing.`;
   }
  }
 
