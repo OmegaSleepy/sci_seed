@@ -44,7 +44,9 @@
   document.getElementById('doc-title').innerText = title || "Data Entry";
 
   try {
-   const response = await fetch(fileUrl);
+   const safeUrl = encodeURI(fileUrl);
+   const response = await fetch(safeUrl);
+
    if (!response.ok) throw new Error("File not found");
    const rawText = await response.text();
 
