@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Reading • SCI-SEED</title>
+	<link rel="stylesheet" href="assets/style.css">
+	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+</head>
+<body>
+<div class="container">
+	<header>
+		<h1 id="nav-title"><a href="index.html">SCI-SEED</a></h1>
+		<nav><a href="archive.html">Archive</a></nav>
+	</header>
+
+	<main>
+		<h2 id="doc-title" style="color: var(--accent-color);"></h2>
+		<div id="reader-area" class="content-area">Loading file encryption streams...</div>
+	</main>
+</div>
+
+<button id="backToTopBtn" class="terminal-totop" title="Return to Top" onclick="scrollToTop()">
+	<span class="arrow">▲</span><span class="btn-text">TOP_LN</span>
+</button>
+
+<footer>© 2026 • OmegaSleepy</footer>
+
+<script>
+ async function loadDocument() {
+  const params = new URLSearchParams(window.location.search);
+  let fileUrl = params.get('file');
+  let title = params.get('title');
+
+  if (!fileUrl && title) {
+   fileUrl = await findFilePathByTitle(title);
+  }
+
+  if (!fileUrl) {
+   document.getElementById('reader-area').innerText = "Error: System could not resolve file path parameters.";
+   return;
+  }
+
+  document.getElementById('doc-title').innerText = title || "Data Entry";
+
+  try {
+   const response = await fetch(fileUrl);
+   if (!response.ok) throw new Error("File not found");
+   const rawText = await response.text();
+
+   parseAndRender(rawText);
+  } catch (err) {
+   document.getElementById('reader-area').innerText = `Error 404: Node stream at '${fileUrl}' broken or missing.`;
+  }
+ }
+
+ async function findFilePathByTitle(title) {
+  try {
+   const response = await fetch('chapter_list.csv');
+   const csvText = await response.text();
+   const lines = csvText.split('\n').map(l => l.trim());
+   let currentArc = "";
+
+   for (let line of lines) {
+    const parts = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+    if (parts.length < 2) {
+     currentArc = parts[0].replace(/"/g, '');
+    } else {
+     const lineTitle = parts[0].replace(/"/g, '');
+     if (lineTitle === title) {
+      return currentArc ? `reading/${currentArc}/${title}.md` : `reading/${title}.md`;
+     }
+    }
+   }
+  } catch (e) {
+   console.error(e);
+  }
+  return null;
+ }
+
+ function parseAndRender(rawText) {
+  const readerArea = document.getElementById('reader-area');
+
+  const yamlRegex = /^---\r?\n([\s\S]*?)\r?\n---\r?\n/;
+  const match = rawText.match(yamlRegex);
+
+  let markdownContent = rawText;
+  let config = {type: 'chapter'};
+
+  if (match) {
+   try {
+    config = jsyaml.load(match[1]);
+    markdownContent = rawText.replace(yamlRegex, '');
+   } catch (e) {
+    console.error("YAML parsing error: ", e);
+   }
+  }
+
+  const wikiLinkRegex = /\[\[([^\]|]+)\|([^\]]+)\]\]/g;
+  markdownContent = markdownContent.replace(wikiLinkRegex, (match, path, display) => {
+   const filePath = path.trim();
+   const displayText = display.trim();
+
+   const fullFileUrl = `reading/${filePath}.md`;
+
+   const extensionMatch = filePath.match(/\.([a-zA-Z0-9]+)$/);
+   const badgeText = extensionMatch ? extensionMatch[1].toUpperCase() : "EXE";
+
+   return `<a class="wiki-link-console" href="reading.html?file=${encodeURIComponent(fullFileUrl)}&title=${encodeURIComponent(displayText)}" data-cmd="${badgeText}">${displayText}</a>`;
+  });
+
+  let htmlContent = marked.parse(markdownContent);
+
+  const customDivider = '<div class="sci-fi-hr">[ DATA_SEGMENT_BREAK ]</div>';
+  htmlContent = htmlContent.replace(/<hr\s*\/?>/g, customDivider);
+
+  if (config.type === 'document') {
+   readerArea.className = "content-area mode-document";
+
+   const documentHeader = `
+            <div style="border-bottom: 3px double var(--accent-dim); padding-bottom: 0.5rem; margin-bottom: 2rem; display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--accent-color); font-weight: bold; letter-spacing: 1px;">
+                <span>STATUS: RECORD_DECRYPTED</span>
+                <span>SECURE ARCHIVE DIRECTIVE</span>
+            </div>
+        `;
+   readerArea.innerHTML = documentHeader + htmlContent;
+  } else {
+   readerArea.className = "content-area mode-chapter";
+   readerArea.innerHTML = htmlContent;
+  }
+ }
+
+ window.onload = loadDocument;
+
+ window.onscroll = function() {
+  const topBtn = document.getElementById("backToTopBtn");
+  if (topBtn) {
+   if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+    topBtn.classList.add("show");
+   } else {
+    topBtn.classList.remove("show");
+   }
+  }
+ };
+
+ function scrollToTop() {
+  window.scrollTo({
+   top: 0,
+   behavior: "smooth"
+  });
+ }
+</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Archive • SCI-SEED</title>
+	<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="container">
+	<header>
+		<h1><a href="index.html">SCI-SEED</a></h1>
+		<nav>
+			<a href="archive.html" style="color: var(--accent-color);">Archive Node</a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="hero-section" style="padding: 2rem;">
+			<div class="system-status">
+				<div class="pulse-dot"></div>
+				<span id="record-count">INDEX_QUERY // INITIALIZING...</span>
+			</div>
+
+			<h2 class="hero-title" style="font-size: 1.4rem; margin-bottom: 1rem;">&gt; ARCHIVE_DATABASE_QUERY</h2>
+			<p style="font-size: 0.9rem; margin-bottom: 1.5rem; color: #7fa18c;">Input filter parameters below to sort through transmission logs, official directives, and sector updates.</p>
+
+			<div style="position: relative; margin-bottom: 2rem;">
+				<span style="position: absolute; left: 1rem; top: 1rem; color: var(--accent-color); font-family: 'Courier New', Courier, monospace; font-weight: bold;">$</span>
+				<input type="text" id="searchBar" class="search-box" placeholder="FILTER_BY_TITLE..." style="padding-left: 2.2rem; margin-bottom: 0;">
+			</div>
+
+			<div id="archiveList" style="font-family: 'Courier New', Courier, monospace; font-size: 0.95rem;">
+				[CONNECTING TO MATRIX MANIFEST...]
+			</div>
+		</section>
+	</main>
+</div>
+<footer>© 2026 • OmegaSleepy</footer>
+
+<script>
+ let chaptersData = [];
+
+ async function loadArchive() {
+  try {
+   const response = await fetch('chapter_list.csv');
+   const csvText = await response.text();
+   parseCSV(csvText);
+   renderArchive(chaptersData);
+  } catch (err) {
+   document.getElementById('archiveList').innerHTML = "<span style='color: #ff3333;'>[ERROR: Failed to establish link to archive manifest.csv]</span>";
+   document.getElementById('record-count').innerText = "QUERY_FAILED";
+  }
+ }
+
+ function parseCSV(text) {
+  const lines = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+  let currentArc = "";
+
+  lines.forEach(line => {
+   const parts = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+
+   if (parts.length < 2) {
+    currentArc = parts[0].replace(/"/g, '');
+   } else {
+    const title = parts[0].replace(/"/g, '');
+    const id = parseInt(parts[1], 10);
+    chaptersData.push({ id, title, arc: currentArc });
+   }
+  });
+
+  chaptersData.sort((a, b) => a.id - b.id);
+ }
+
+ function renderArchive(chapters) {
+  const container = document.getElementById('archiveList');
+  const counter = document.getElementById('record-count');
+  container.innerHTML = "";
+
+  counter.innerText = `RECORDS_FOUND: ${chapters.length} // STRINGS`;
+
+  if(chapters.length === 0) {
+   container.innerHTML = "<p style='color: var(--accent-dim); padding: 1rem;'>[!] NO CORRESPONDING DATA MATRICES FOUND FOR QUERY.</p>";
+   return;
+  }
+
+  let lastRenderedArc = null;
+
+  chapters.forEach(chap => {
+   if (chap.arc && chap.arc !== lastRenderedArc && document.getElementById('searchBar').value === "") {
+    const arcHead = document.createElement('h3');
+    arcHead.className = 'arc-header';
+    arcHead.innerText = `// root / ${chap.arc.toLowerCase().replace(/\s+/g, '_')}`;
+    container.appendChild(arcHead);
+    lastRenderedArc = chap.arc;
+   } else if (!chap.arc && lastRenderedArc !== "root" && document.getElementById('searchBar').value === "") {
+    const arcHead = document.createElement('h3');
+    arcHead.className = 'arc-header';
+    arcHead.innerText = `// root / unassigned`;
+    container.appendChild(arcHead);
+    lastRenderedArc = "root";
+   }
+
+   const item = document.createElement('div');
+   item.className = 'chapter-item';
+   item.style.background = "rgba(6, 9, 12, 0.6)";
+
+   const fileUrl = chap.arc ? `reading/${chap.arc}/${chap.title}.md` : `reading/${chap.title}.md`;
+
+   item.innerHTML = `
+        <div>
+            <span style="color: var(--accent-color); margin-right: 0.5rem;">■</span>
+            <a href="reading.html?file=${encodeURIComponent(fileUrl)}&title=${encodeURIComponent(chap.title)}" style="font-family: 'Courier New', Courier, monospace;">${chap.title}</a>
+        </div>
+        <span style="color: var(--accent-dim); font-size: 0.85rem; letter-spacing: 1px;">ID_REF_00${chap.id}</span>
+   `;
+   container.appendChild(item);
+  });
+ }
+
+ document.getElementById('searchBar').addEventListener('input', (e) => {
+  const query = e.target.value.toLowerCase();
+  const filtered = chaptersData.filter(c => c.title.toLowerCase().includes(query));
+  renderArchive(filtered);
+ });
+
+ window.onload = loadArchive;
+</script>
+</body>
+</html>
