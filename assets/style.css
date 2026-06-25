@@ -217,7 +217,6 @@ nav a:hover {
 .chapter-item a:hover { color: var(--accent-color); }
 
 /* --- READING MODES --- */
-/* --- READING MODES --- */
 .content-area {
     margin-top: 2rem;
 }
@@ -228,7 +227,14 @@ nav a:hover {
     font-size: 1.2rem;
     line-height: 1.85;
     color: #d1dfd6;
+
+    background-color: rgba(13, 19, 23, 0.4);
+    border: 1px solid rgba(23, 34, 42, 0.5);
+    padding: 2.5rem 2rem;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
+
 .mode-chapter p { margin-bottom: 1.75rem; text-align: justify; }
 .mode-chapter h1, .mode-chapter h2, .mode-chapter h3 {
     color: #ffffff;
@@ -242,7 +248,7 @@ nav a:hover {
     line-height: 1.6;
     background-color: rgba(4, 6, 8, 0.95);
     border: 1px solid var(--border-color);
-    padding: 3rem 2.5rem; /* Spacious internal padding like a real sheet of paper */
+    padding: 3rem 2.5rem;
     border-radius: 2px;
     color: #a9c6b7;
     position: relative;
