@@ -6,6 +6,23 @@
     --card-bg: #0d1317;
     --border-color: #17222a;
     --glitch-speed: 2s;
+
+    --status-full-color: #00ff66;
+    --status-full-bg: rgba(0, 255, 102, 0.05);
+    --status-full-border: rgba(0, 255, 102, 0.2);
+
+    --status-partial-color: #ffaa00;
+    --status-alert-color: #ffaa00;
+    --status-partial-bg: rgba(255, 170, 0, 0.05);
+    --status-partial-border: rgba(255, 170, 0, 0.2);
+
+    --status-encrypted-color: #00e5ff;
+    --status-encrypted-bg: rgba(0, 229, 255, 0.05);
+    --status-encrypted-border: rgba(0, 229, 255, 0.2);
+
+    --status-corrupted-color: #ff3333;
+    --status-corrupted-bg: rgba(255, 51, 51, 0.05);
+    --status-corrupted-border: rgba(255, 51, 51, 0.2);
 }
 
 /* Custom Scrollbar */
@@ -420,4 +437,82 @@ footer {
 .terminal-totop:hover .arrow {
     transform: translateY(-2px);
     color: #ffffff;
+}
+
+/* --- YAML STATUS INDICATORS --- */
+.status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    letter-spacing: 0.5px;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+/* Variant Styles Utilizing Tokens */
+.status-full {
+    color: var(--status-full-color);
+    background: var(--status-full-bg);
+    border-color: var(--status-full-border);
+}
+.status-full .status-dot {
+    background-color: var(--status-full-color);
+    box-shadow: 0 0 6px var(--status-full-color);
+}
+
+.status-partial {
+    color: var(--status-partial-color);
+    background: var(--status-partial-bg);
+    border-color: var(--status-partial-border);
+}
+.status-partial .status-dot {
+    background-color: var(--status-partial-color);
+    box-shadow: 0 0 6px var(--status-partial-color);
+}
+
+.status-encrypted {
+    color: var(--status-encrypted-color);
+    background: var(--status-encrypted-bg);
+    border-color: var(--status-encrypted-border);
+}
+.status-encrypted .status-dot {
+    background-color: var(--status-encrypted-color);
+    box-shadow: 0 0 6px var(--status-encrypted-color);
+}
+
+.status-corrupted {
+    color: var(--status-corrupted-color);
+    background: var(--status-corrupted-bg);
+    border-color: var(--status-corrupted-border);
+}
+.status-corrupted .status-dot {
+    background-color: var(--status-corrupted-color);
+    box-shadow: 0 0 6px var(--status-corrupted-color);
+}
+
+.text-alert-amber {
+    color: var(--status-alert-color) !important;
+}
+
+.document-stream-footer {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--accent-dim);
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.8rem;
+    color: var(--accent-dim);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
