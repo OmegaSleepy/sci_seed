@@ -1,6 +1,7 @@
 ---
 id: 1
 type: chapter
+status: full
 ---
 A cool breeze blew in from the opened window, but Mark did not even bother to close it. His eyes were glued only to the screen glowing in front of him. With his pasty complexion and heavy, dark eye shadows, he seemed more like a ghost lurking around in his room rather than an eighteen-year-old boy winning yet another national informatics Olympiad. Socializing was tiring for him, while math and logic were simply logical. It was only within himself that he was able to work with variables, identify patterns, and construct worlds using codes.
 

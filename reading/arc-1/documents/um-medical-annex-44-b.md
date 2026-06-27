@@ -1,10 +1,8 @@
 ---
 id: -3
 type: document
+status: corrupted
 ---
 ### WARNING DOCUMENT CORRUPTED
 
-<span class="obfuscated">NONE OF THIS MATTERS, READ UP MY BOY, MORE BITS WILL COME IN THE FUTURE, YAHAYAYAYAYAYAYAYAYAYAYAYAYAYAYAYYAYAYAYAYAYAYA</span>
-
-*end of transmition*   
-`0`
+<span class="obfuscated">NO</span>

@@ -1,6 +1,7 @@
 ---
 id: 0
 type: chapter
+status: full
 ---
 In the Bulgarian National Space Agency, the lab stayed silent apart from the combined noise of the computers. This was the middle of the night shift, and there were two chief researchers trying to keep themselves awake.
 

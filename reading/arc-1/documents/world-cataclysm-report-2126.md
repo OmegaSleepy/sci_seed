@@ -1,6 +1,7 @@
 ---
 id: -1
 type: document
+status: full
 ---
 # WORLD CATACLYSM REPORT (WCR-2126)
 
@@ -91,4 +92,3 @@ The planetary closure sequence will commence immediately upon confirmation of th
 
 May humanity find its footing among the stars, or await its return in the soil.
 
-**[ SECURE TRANSMISSION COMPLETED ]** **[ AUTHENTICATION CODES DETONATED ]** **[ RECORD INJECTIONS TERMINATED ]** 
