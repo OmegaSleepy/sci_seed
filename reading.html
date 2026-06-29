@@ -45,12 +45,12 @@
   document.getElementById('doc-title').innerText = title || "Data Entry";
 
   try {
-   let correctPath = fileUrl;
-   if (!correctPath.startsWith('/sci_seed/') && !correctPath.startsWith('http')) {
-    correctPath = `/sci_seed/${correctPath.replace(/^\//, '')}`;
+   let fetchPath = fileUrl;
+   if (!fetchPath.startsWith('http')) {
+    fetchPath = fetchPath.replace(/^\//, '');
    }
 
-   const response = await fetch(correctPath);
+   const response = await fetch(fetchPath);
    if (!response.ok) throw new Error("File not found");
    const rawText = await response.text();
 
@@ -91,7 +91,7 @@
   const match = rawText.match(yamlRegex);
 
   let markdownContent = rawText;
-  let config = {type: 'chapter', status: 'full'}; // Default fallback status
+  let config = {type: 'chapter', status: 'full'};
 
   if (match) {
    try {
@@ -102,30 +102,52 @@
    }
   }
 
+  // Handle WikiLinks
   const wikiLinkRegex = /\[\[([^\]|]+)\|([^\]]+)\]\]/g;
   markdownContent = markdownContent.replace(wikiLinkRegex, (match, path, display) => {
    const filePath = path.trim();
    let displayText = display.trim();
-
    const fullFileUrl = `reading/${filePath}.md`;
-
    const extensionMatch = displayText.match(/\.([a-zA-Z0-9]+)$/);
    const badgeText = extensionMatch ? extensionMatch[1].toUpperCase() : "EXE";
 
    if (extensionMatch) {
     displayText = displayText.replace(/\.[a-zA-Z0-9]+$/, '');
    }
-
    return `<a class="wiki-link-console" href="reading.html?file=${encodeURIComponent(fullFileUrl)}&title=${encodeURIComponent(displayText)}" data-cmd="${badgeText}">${displayText}</a>`;
   });
 
+  // Convert Markdown to HTML
   let htmlContent = marked.parse(markdownContent);
 
+  // Custom Divider
   const customDivider = '<div class="sci-fi-hr">[ DATA_SEGMENT_BREAK ]</div>';
   htmlContent = htmlContent.replace(/<hr\s*\/?>/g, customDivider);
-  const hasTable = /<table[\s>]/.test(htmlContent);
-  const tableToggleButton = hasTable ? `<button id="mobileTableToggle" type="button" class="enter-btn mobile-table-toggle" aria-expanded="false">SHOW TABLE CONTENT</button>` : '';
-  // --- NEW: Map YAML statuses to themed indicator badges ---
+
+  // SAFE TABLE WRAPPING IMPLEMENTATION
+  const hasTable = htmlContent.includes('<table');
+  if (hasTable) {
+   const tableToggleButton = `<button id="mobileTableToggle" type="button" class="enter-btn mobile-table-toggle" aria-expanded="false">SHOW TABLE CONTENT</button>`;
+
+   // Create a temporary sandboxed DOM element to safely wrap tables without messy string replaces
+   const tempDiv = document.createElement('div');
+   tempDiv.innerHTML = htmlContent;
+   const tables = tempDiv.getElementsByTagName('table');
+
+   // Loop backwards to safely wrap any markdown tables found
+   for (let i = tables.length - 1; i >= 0; i--) {
+    const table = tables[i];
+    const wrapper = document.createElement('div');
+    wrapper.className = 'table-toggle-wrapper';
+    wrapper.innerHTML = `${tableToggleButton}<div class="table-container"></div>`;
+
+    table.parentNode.insertBefore(wrapper, table);
+    wrapper.querySelector('.table-container').appendChild(table);
+   }
+   htmlContent = tempDiv.innerHTML;
+  }
+
+  // Map YAML statuses
   const validStatuses = ['full', 'partial', 'encrypted', 'corrupted'];
   const statusKey = validStatuses.includes(config.status) ? config.status : 'full';
 
@@ -144,36 +166,34 @@
 
   if (config.type === 'document') {
    readerArea.className = "content-area mode-document";
-
-   // Determine the text and conditional class based on status rules
    const isIntact = (statusKey === 'full' || statusKey === 'partial');
    const mainStatusText = isIntact ? "STATUS: RECORD_DECRYPTED" : "STATUS: THROWN EXCEPTION";
    const alertClass = isIntact ? "" : "class=\"text-alert-amber\"";
 
    const documentHeader = `
             <div class="reading-header">
-                <span ${alertClass}>${mainStatusText}</span>
-                <div class="reading-header-meta">
+                <div class="reading-header-left">
+                    <span ${alertClass}>${mainStatusText}</span>
+                </div>
+                <div class="reading-header-right">
                     ${statusIndicatorHtml}
                     <span class="directive-label">SECURE ARCHIVE DIRECTIVE</span>
                 </div>
             </div>
         `;
    const documentFooter = `<div class="document-stream-footer">File Stream Exhausted</div>`;
-   readerArea.innerHTML = documentHeader + tableToggleButton + htmlContent + documentFooter;
+   readerArea.innerHTML = documentHeader + htmlContent + documentFooter;
   } else {
    readerArea.className = "content-area mode-chapter";
-
-   // Standard chapters just get the small terminal indicator floating neatly above the text
    const chapterHeader = `
             <div style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
                 ${statusIndicatorHtml}
             </div>
         `;
-
-   readerArea.innerHTML = chapterHeader + tableToggleButton + htmlContent;
+   readerArea.innerHTML = chapterHeader + htmlContent;
   }
 
+  // Safe Toggle Attachments
   if (hasTable) {
    const toggleBtn = document.getElementById('mobileTableToggle');
    if (toggleBtn) {
@@ -184,18 +204,28 @@
      document.body.classList.toggle('table-expanded-mobile', !expanded);
     });
    }
-   } else {
-    topBtn.classList.remove("show");
-   }
   }
- };
+ }
 
- function scrollToTop() {
+window.onload = loadDocument;
+
+window.onscroll = function() {
+  const topBtn = document.getElementById("backToTopBtn");
+  if (topBtn) {
+    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+      topBtn.classList.add("show");
+    } else {
+      topBtn.classList.remove("show");
+    }
+  }
+};
+
+function scrollToTop() {
   window.scrollTo({
    top: 0,
    behavior: "smooth"
   });
- }
+}
 </script>
 
 <script src="js/obfuscated.js" defer></script>

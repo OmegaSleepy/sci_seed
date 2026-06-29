@@ -55,18 +55,29 @@ body {
     width: 100%;
     max-width: 850px;
     margin: 0 auto;
-    padding: 3rem 1.5rem;
+    padding: 1.5rem 1.25rem; /* Reduced from 3rem to save vertical space */
     flex: 1;
 }
 
 /* Header & Navigation */
 header {
     border-bottom: 1px solid var(--border-color);
-    padding-bottom: 1.5rem;
-    margin-bottom: 3rem;
+    padding-bottom: 1.5rem; /* Restored generous padding for breathing room */
+    margin-bottom: 3.5rem;  /* Increased from 1.5rem/3rem to enforce strong separation */
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+#doc-title {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    margin-top: 1rem;       /* Added explicit separation from the nav border above */
+    margin-bottom: 2rem;    /* Generous spacing before the metadata block begins */
+    text-shadow: 0 0 10px rgba(0, 255, 102, 0.2);
 }
 
 header h1 a {
@@ -175,6 +186,71 @@ nav a:hover {
     box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
 }
 
+.mobile-table-toggle {
+    display: none;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.reading-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    background: rgba(23, 34, 42, 0.25); /* Subtle container background */
+    border: 1px solid var(--border-color); /* Clean, uniform border on all four sides */
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.reading-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.reading-header-left span {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+}
+
+.reading-header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+.reading-header-left,
+.reading-header-right {
+    min-width: 0;
+}
+
+.reading-header-left span,
+.reading-header-right span {
+    white-space: normal;
+}
+
+.table-toggle-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 1rem 0 0;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.directive-label {
+    display: inline-block;
+}
+
 /* --- CUSTOM TEXT SEPARATOR --- */
 .sci-fi-hr {
     display: flex;
@@ -235,7 +311,7 @@ nav a:hover {
 
 /* --- READING MODES --- */
 .content-area {
-    margin-top: 2rem;
+    margin-top: 1rem; /* Reduced from 2rem */
 }
 
 /* Default Readable Style (For standard storytelling) */
@@ -262,10 +338,10 @@ nav a:hover {
 .mode-document {
     font-family: "Courier New", Courier, monospace;
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.5;
     background-color: rgba(4, 6, 8, 0.95);
     border: 1px solid var(--border-color);
-    padding: 3rem 2.5rem;
+    padding: 1.75rem 1.5rem; /* Reduced from 3rem 2.5rem to pull content up */
     border-radius: 2px;
     color: #a9c6b7;
     position: relative;
@@ -533,13 +609,13 @@ nav a:focus-visible,
     }
 
     .container {
-        padding: 1.5rem 1rem;
+        padding: 1rem 0.75rem; /* Much tighter side padding on small screens */
     }
 
     header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
+        flex-direction: row; /* Keeps SCI-SEED and Archive on one line to save vertical block space */
+        align-items: center;
+        margin-bottom: 1rem;
     }
 
     nav {
@@ -605,12 +681,12 @@ nav a:focus-visible,
     }
 
     .content-area {
-        margin-top: 1.5rem;
+        margin-top: 1rem; /* Reduced from 2rem */
     }
 
     .mode-chapter,
     .mode-document {
-        padding: 1.8rem 1.5rem;
+        padding: 1.25rem 1rem; /* Eliminates the massive inner padding gutters */
     }
 
     .mode-chapter {
@@ -644,19 +720,23 @@ nav a:focus-visible,
         padding: 0.8rem 1rem;
     }
 
-    .reading-header {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        gap: 0.75rem;
-        border-bottom: 3px double var(--accent-dim);
-        padding-bottom: 0.75rem;
+    #doc-title {
+        font-size: 1.5rem; /* Scales title text down on phones */
         margin-bottom: 1rem;
-        font-size: 0.8rem;
-        color: var(--accent-color);
-        font-weight: bold;
-        letter-spacing: 1px;
+    }
+
+    .reading-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+
+    .reading-header-right {
+        align-items: flex-start;
+        width: 100%;
+        border-top: 1px dashed var(--border-color);
+        padding-top: 0.5rem;
     }
 
     .reading-header-meta {
@@ -676,17 +756,15 @@ nav a:focus-visible,
         display: block;
         width: 100%;
         text-align: center;
-        margin: 1rem 0;
+        margin: 1rem 0 0;
         padding: 0.85rem 1rem;
     }
 
-    .mode-document table,
-    .mode-chapter table {
+    .table-container table {
         display: none;
     }
 
-    .table-expanded-mobile .mode-document table,
-    .table-expanded-mobile .mode-chapter table {
+    .table-expanded-mobile .table-container table {
         display: table;
         width: 100%;
     }
