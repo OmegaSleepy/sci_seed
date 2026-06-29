@@ -516,3 +516,158 @@ footer {
     text-transform: uppercase;
     letter-spacing: 2px;
 }
+
+button:focus-visible,
+.enter-btn:focus-visible,
+nav a:focus-visible,
+.search-box:focus-visible,
+.wiki-link-console:focus-visible,
+.terminal-totop:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+@media (max-width: 800px) {
+    body {
+        background-size: 60px 60px;
+    }
+
+    .container {
+        padding: 1.5rem 1rem;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    nav a {
+        margin-left: 0;
+    }
+
+    .hero-section {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .system-status {
+        position: static;
+        width: 100%;
+        justify-content: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .system-status span {
+        font-size: 0.85rem;
+    }
+
+    .hero-title {
+        font-size: 1.55rem;
+    }
+
+    .hero-meta-grid {
+        grid-template-columns: 1fr;
+        padding-top: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .enter-btn {
+        width: 100%;
+        padding: 0.85rem 1rem;
+        text-align: center;
+    }
+
+    .search-box {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    .chapter-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .chapter-item div {
+        width: 100%;
+    }
+
+    .chapter-item span {
+        align-self: flex-start;
+    }
+
+    .content-area {
+        margin-top: 1.5rem;
+    }
+
+    .mode-chapter,
+    .mode-document {
+        padding: 1.8rem 1.5rem;
+    }
+
+    .mode-chapter {
+        font-size: 1.05rem;
+    }
+
+    .mode-document {
+        font-size: 0.98rem;
+        padding: 2rem 1.5rem;
+    }
+
+    .status-indicator {
+        flex-wrap: wrap;
+        gap: 0.35rem;
+    }
+
+    .wiki-link-console {
+        width: 100%;
+        justify-content: space-between;
+        padding: 0.75rem 0.85rem;
+    }
+
+    .wiki-link-console::after {
+        display: block;
+        margin-top: 0.4rem;
+    }
+
+    .terminal-totop {
+        right: 1rem;
+        bottom: 1rem;
+        padding: 0.8rem 1rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .container {
+        padding: 1rem 0.75rem;
+    }
+
+    .hero-title {
+        font-size: 1.3rem;
+    }
+
+    .meta-item {
+        font-size: 0.78rem;
+    }
+
+    .chapter-item {
+        padding: 0.85rem;
+    }
+
+    .chapter-item a {
+        font-size: 1rem;
+    }
+
+    .mode-chapter,
+    .mode-document {
+        border-radius: 0;
+    }
+}
