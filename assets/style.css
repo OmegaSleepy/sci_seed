@@ -643,6 +643,53 @@ nav a:focus-visible,
         bottom: 1rem;
         padding: 0.8rem 1rem;
     }
+
+    .reading-header {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 0.75rem;
+        border-bottom: 3px double var(--accent-dim);
+        padding-bottom: 0.75rem;
+        margin-bottom: 1rem;
+        font-size: 0.8rem;
+        color: var(--accent-color);
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .reading-header-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .directive-label {
+        display: none;
+    }
+
+    .mobile-table-toggle {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin: 1rem 0;
+        padding: 0.85rem 1rem;
+    }
+
+    .mode-document table,
+    .mode-chapter table {
+        display: none;
+    }
+
+    .table-expanded-mobile .mode-document table,
+    .table-expanded-mobile .mode-chapter table {
+        display: table;
+        width: 100%;
+    }
 }
 
 @media (max-width: 520px) {
